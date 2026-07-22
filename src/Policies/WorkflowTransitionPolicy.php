@@ -5,12 +5,7 @@ declare(strict_types=1);
 namespace Rimba\Flow\Policies;
 
 use App\Models\User;
-use Rimba\Flow\Models\WorkflowBlueprint;
-use Rimba\Flow\Models\WorkflowInstance;
-use Rimba\Flow\Models\WorkflowNode;
-use Rimba\Flow\Models\WorkflowNodeInstance;
 use Rimba\Flow\Models\WorkflowTransition;
-use Rimba\Flow\Models\WorkflowTransitionInstance;
 
 final class WorkflowTransitionPolicy
 {
@@ -45,4 +40,3 @@ final class WorkflowTransitionPolicy
         return $user->can('workflow-transition.delete');
     }
 }
-

@@ -8,4 +8,3 @@ enum WorkflowTransitionStatus: string
 {
     case Executed = 'executed';
 }
-

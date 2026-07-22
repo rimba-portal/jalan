@@ -10,4 +10,3 @@ enum WorkflowNodeStatus: string
     case Completed = 'completed';
     case Cancelled = 'cancelled';
 }
-

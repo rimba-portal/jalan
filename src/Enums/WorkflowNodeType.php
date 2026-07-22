@@ -12,4 +12,3 @@ enum WorkflowNodeType: string
     case Merge = 'merge';
     case End = 'end';
 }
-
