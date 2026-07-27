@@ -23,7 +23,7 @@ return new class extends Migration
 
         Schema::create('workflow_nodes', function (Blueprint $table): void {
             $table->id();
-            $table->foreignId('workflow_blueprint_id')->constrained('workflowblueprints');
+            $table->foreignId('workflow_blueprint_id')->constrained('workflow_blueprints');
             $table->foreignId('work_package_id')->nullable()->constrained('work_packages');
             $table->string('name');
             $table->string('type')->index();
@@ -31,7 +31,7 @@ return new class extends Migration
         });
         Schema::create('workflow_transitions', function (Blueprint $table): void {
             $table->id();
-            $table->foreignId('workflow_blueprint_id')->constrained('workflowblueprints');
+            $table->foreignId('workflow_blueprint_id')->constrained('workflow_blueprints');
             $table->foreignId('from_node_id')->constrained('workflow_nodes');
             $table->foreignId('to_node_id')->constrained('workflow_nodes');
             $table->string('name')->nullable();
@@ -41,7 +41,7 @@ return new class extends Migration
         });
         Schema::create('workflow_instances', function (Blueprint $table): void {
             $table->id();
-            $table->foreignId('workflow_blueprint_id')->constrained('workflowblueprints');
+            $table->foreignId('workflow_blueprint_id')->constrained('workflow_blueprints');
             // $table->string('trackable_id')->nullable();
             // $table->string('trackable_type')->nullable();
             $table->string('status')->default('active');
@@ -50,7 +50,7 @@ return new class extends Migration
         });
         Schema::create('workflow_node_instances', function (Blueprint $table): void {
             $table->id();
-            $table->foreignId('workflow_instance_id')->constrained('workflowinstances');
+            $table->foreignId('workflow_instance_id')->constrained('workflow_instances');
             $table->foreignId('workflow_node_id')->constrained('workflow_nodes');
             $table->timestamp('activated_at');
             $table->timestamp('completed_at')->nullable();
@@ -58,7 +58,7 @@ return new class extends Migration
         });
         Schema::create('workflow_transition_instances', function (Blueprint $table): void {
             $table->id();
-            $table->foreignId('workflow_instance_id')->constrained('workflowinstances');
+            $table->foreignId('workflow_instance_id')->constrained('workflow_instances');
             $table->foreignId('workflow_transition_id')->constrained('workflow_transitions');
             $table->timestamp('executed_at');
             $table->foreignId('executed_by_id')->nullable()->constrained('users');
