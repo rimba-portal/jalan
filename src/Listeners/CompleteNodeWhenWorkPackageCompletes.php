@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Rimba\Flow\Listeners;
 
 use Rimba\Flow\Events\WorkflowNodeCompleted;

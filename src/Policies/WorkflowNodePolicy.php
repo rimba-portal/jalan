@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Rimba\Flow\Policies;
 
 use App\Models\User;
-use Rimba\Flow\Models\WorkflowNode;
 
 final class WorkflowNodePolicy
 {
@@ -16,7 +15,6 @@ final class WorkflowNodePolicy
 
     public function view(
         User $user,
-        WorkflowNode $workflowNode,
     ): bool {
         return $user->can('workflow-node.view');
     }
@@ -28,14 +26,12 @@ final class WorkflowNodePolicy
 
     public function update(
         User $user,
-        WorkflowNode $workflowNode,
     ): bool {
         return $user->can('workflow-node.update');
     }
 
     public function delete(
         User $user,
-        WorkflowNode $workflowNode,
     ): bool {
         return $user->can('workflow-node.delete');
     }

@@ -11,8 +11,8 @@ use Rimba\Flow\Models\WorkflowNodeInstance;
 final class WorkflowEngine
 {
     public function __construct(
-        protected TransitionEvaluator $transitionEvaluator,
-        protected NodeActivationService $nodeActivationService,
+        private TransitionEvaluator $transitionEvaluator,
+        private NodeActivationService $nodeActivationService,
     ) {}
 
     public function processNodeCompletion(
@@ -30,7 +30,6 @@ final class WorkflowEngine
             if (
                 $this->transitionEvaluator->passes(
                     $transition,
-                    $nodeInstance->workflowInstance,
                 )
             ) {
                 $matchedTransitions->push($transition);
@@ -45,18 +44,18 @@ final class WorkflowEngine
             return;
         }
 
-        foreach ($matchedTransitions as $transition) {
+        foreach ($matchedTransitions as $matchedTransition) {
 
             app(ExecuteTransition::class)
                 ->execute(
                     $nodeInstance->workflowInstance,
-                    $transition,
+                    $matchedTransition,
                 );
 
             $this->nodeActivationService
                 ->activate(
                     $nodeInstance->workflowInstance,
-                    $transition->toNode,
+                    $matchedTransition->toNode,
                 );
         }
     }

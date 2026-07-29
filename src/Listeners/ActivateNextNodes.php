@@ -1,14 +1,13 @@
 <?php
 
-namespace Rimba\Flow\Listeners;
+declare(strict_types=1);
 
-use Rimba\Flow\Events\WorkflowTransitionExecuted;
+namespace Rimba\Flow\Listeners;
 
 final class ActivateNextNodes
 {
-    public function handle(
-        WorkflowTransitionExecuted $event,
-    ): void {
+    public function handle(): void
+    {
         // Optional listener.
         // Useful when supporting parallel branches later.
     }

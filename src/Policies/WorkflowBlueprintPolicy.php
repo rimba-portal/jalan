@@ -19,7 +19,6 @@ final class WorkflowBlueprintPolicy
 
     public function view(
         User $user,
-        WorkflowBlueprint $workflowBlueprint,
     ): bool {
         return $user->can('workflow-blueprint.view');
     }
@@ -31,14 +30,12 @@ final class WorkflowBlueprintPolicy
 
     public function update(
         User $user,
-        WorkflowBlueprint $workflowBlueprint,
     ): bool {
         return $user->can('workflow-blueprint.update');
     }
 
     public function delete(
         User $user,
-        WorkflowBlueprint $workflowBlueprint,
     ): bool {
         return $user->can('workflow-blueprint.delete');
     }

@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Rimba\Flow\Policies;
 
 use App\Models\User;
-use Rimba\Flow\Models\WorkflowTransitionInstance;
 
 final class WorkflowTransitionInstancePolicy
 {
@@ -14,28 +13,22 @@ final class WorkflowTransitionInstancePolicy
      */
     public function view(
         User $user,
-        WorkflowTransitionInstance $transitionInstance,
     ): bool {
         return $user->can('workflow-transition-instance.view');
     }
 
-    public function create(
-        User $user,
-    ): bool {
+    public function create(): bool
+    {
         return false;
     }
 
-    public function update(
-        User $user,
-        WorkflowTransitionInstance $transitionInstance,
-    ): bool {
+    public function update(): bool
+    {
         return false;
     }
 
-    public function delete(
-        User $user,
-        WorkflowTransitionInstance $transitionInstance,
-    ): bool {
+    public function delete(): bool
+    {
         return false;
     }
 }

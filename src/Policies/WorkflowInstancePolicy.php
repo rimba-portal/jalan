@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Rimba\Flow\Policies;
 
 use App\Models\User;
-use Rimba\Flow\Models\WorkflowInstance;
 
 final class WorkflowInstancePolicy
 {
@@ -16,7 +15,6 @@ final class WorkflowInstancePolicy
 
     public function view(
         User $user,
-        WorkflowInstance $workflowInstance,
     ): bool {
         return $user->can('workflow-instance.view');
     }
@@ -28,7 +26,6 @@ final class WorkflowInstancePolicy
 
     public function cancel(
         User $user,
-        WorkflowInstance $workflowInstance,
     ): bool {
         return $user->can('workflow-instance.cancel');
     }
